@@ -40,7 +40,7 @@ Meine Lernschritte: <br>
 
 Zuerst möchte ich kurz die Containerarchitektur aufzeigen, die bei Docker verwendet wird: <br>
 
-![Alt-Text](C:/Users/noa.violetti/Container.jpg)<br>
+![Alt-Text](https://nextcloud.server-core.ch/index.php/s/Y4ZyK76enJKJj7f/Container.jpg)<br>
 In diesem Bild wird simpel aufgezeigt wie die Architektur von Container aussieht. <br>
 <br>
 Damit ich in das Thema Reinkomme habe ich zuerst einige Simple Docker Files erstellt und geschaut ob ich diese zum laufen Kriege. <br>
