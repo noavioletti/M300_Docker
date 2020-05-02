@@ -100,8 +100,38 @@ Jetzt habe ich einen Webserver mit der default Apache Seite. Ich habe nun noch e
 - Netzwerkplan
 ![Alt-Text](https://config.server-core.ch/bilder/m300/Netzwerk.jpg)<br>
 Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localhost und dem Zugwiesenen Port auf den Container. <br> 
+
 - Dockerbefehle <br>
-		
+	docker build: Mit Docker Build wird das Docker Image gebuilded zb: docker build -t Test:1.0 . <br>
+	Im folgenden Beispiel wird ein Image mit dem Namen inklusive dem Tag 1.0 gebuilded. Der Punkt steht alternativ für das Dockerfile, welches als Ressource verwendet werden sollte. <br>
+	<br>
+	docker run: Docker Run ist der Befehl für das ausführen von Docker Container. zb: docker run -itd Test:1.0 <br>
+	In diesem Beispiel wird das Test Image ausgeführt mit dem Tag 1.0 und mit interactivem Shell und detach mode. <br>
+	<br>
+	docker volume: Dieser Befehl wird bei Volumen verwendet. <br>
+	docker volume creat xy, wird ein Volumen erstellt. <br>
+	docker volume ls werden alle Volumen aufgelistet. <br>
+	<br>
+	docker ps: Docker ps zeigt alle aktive laufenden Docker Container an. <br>
+	<br>
+	docker image: Docker image listet alle gebuildeten Image auf. <br>
+	<br>
+	docker rm: Mit diesem Befehl können Container entfernt werden. <br>
+	<br>
+	docker rmi: Hier können die Image entfernt werden. <br>
+	<br>
+	docker start: Container wird ausgeführt. <br>	
+	<br>
+	docker stop: Container wird angehalten. <br>
+
+- Anweisungen im Dockerfile: <br>
+	From: deviniert was das Gast OS ist. <br>
+	Expose: Port werden für Container freigegeben <br>
+	Volume: Volume wird definiert. <br>
+	Maintainer: Setzt Besitzer des Image <br>
+	RUN: Befehle werden umgesetzt beim erstmaligen installieren des Containers<br>	
+	CMD: Befehle werden bei jedem Start umgesetzt <br>
+	ENTRYPOINT: Definiert die ausführbare Datei, die beim Start des Contaiers laufen soll. <br>
 # K4 <br>
 # K5 <br>
 # K6 <br>
