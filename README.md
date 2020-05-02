@@ -39,6 +39,8 @@ Meine Lernschritte: <br>
 # K3 <br>
 
 Zuerst möchte ich kurz die Containerarchitektur aufzeigen, die bei Docker verwendet wird: <br>
+
+![Alt-Text](C:\Users\noa.violetti\Pictures\container.png)
 	
 Damit ich in das Thema Reinkomme habe ich zuerst einige Simple Docker Files erstellt und geschaut ob ich diese zum laufen Kriege. <br>
 Dies war mein erstes Dockerfile: <br>
