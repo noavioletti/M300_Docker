@@ -1,0 +1,12 @@
+From opensuse/leap
+
+# RUN zypper ref
+# RUN zypper up -y
+# RUN zypper in apache2 -y 
+# RUN systemctl start apache2 
+# RUN systemctl enable apache2
+# RUN systemctl disable firewalld
+# RUN systemctl stop firewalld
+CMD ["echo", "Hello World.."]
+
+# COPY src/ 

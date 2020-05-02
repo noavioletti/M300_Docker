@@ -1,0 +1,30 @@
+#Base
+FROM ubuntu
+#Externe Schnittstellen
+Expose 80
+Expose 443
+#Volume mounten
+Volume webservernoa:/var/www/html/
+Maintainer Noa Violetti	<noavioletti@hotmail.com>
+#Build
+#System Update
+RUN apt-get update
+RUN apt-get install apt-utils tzdata -y
+RUN apt-get upgrade -y
+RUN echo "Europe/Zurich" > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+#Apache install
+RUN apt-get install apache2 apache2-utils -y
+#Apache Config
+RUN a2enmod ssl
+RUN a2ensite default-ssl.conf
+RUN service apache2 restart
+#Website
+#RUN apt-get install git -y
+#RUN git clone https://github.com/Hextris/hextris.git
+#RUN mv /hextris/* /var/www/html/
+#RUN rmdir hextris
+#Entrypoint
+ENTRYPOINT ["apache2ctl"]
+#Instance
+CMD ["-DFOREGROUND"]
