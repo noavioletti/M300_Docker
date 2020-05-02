@@ -97,6 +97,9 @@ Ich habe noch ein Volumen erstellt damit wenn ich mehrere Webserver mit Hextris 
 Nun kommen wir zum Punkt, wo wir beginnen den Webserver zu installieren. Weil ich via HTTPS auf meinen Container zugreifen möchte muss ich dies ebenfalls noch konfigurieren.
 Jetzt habe ich einen Webserver mit der default Apache Seite. Ich habe nun noch ein Webtemplate eingebaut, wo Hextris darauf läuft. Jetzt muss das Dockerfile noch gebuilded werden und dann kann der Container getestet werden. <br>
 
+- Netzwerkplan
+![Alt-Text](https://config.server-core.ch/bilder/m300/Netzwerk.jpg)<br>
+Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localhost und dem Zugwiesenen Port auf den Container. <br> 
 - Dockerbefehle <br>
 		
 # K4 <br>
