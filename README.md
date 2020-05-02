@@ -40,8 +40,9 @@ Meine Lernschritte: <br>
 
 Zuerst möchte ich kurz die Containerarchitektur aufzeigen, die bei Docker verwendet wird: <br>
 
-![Alt-Text](~\Container.jpg)
-	
+![Alt-Text](C/Users/noa.violetti/Container.jpg)
+In diesem Bild wird simpel aufgezeigt wie die Architektur aussieht. <br>
+<br>
 Damit ich in das Thema Reinkomme habe ich zuerst einige Simple Docker Files erstellt und geschaut ob ich diese zum laufen Kriege. <br>
 Dies war mein erstes Dockerfile: <br>
 From opensuse/leap <br>
