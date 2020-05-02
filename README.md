@@ -40,7 +40,7 @@ Meine Lernschritte: <br>
 
 Zuerst möchte ich kurz die Containerarchitektur aufzeigen, die bei Docker verwendet wird: <br>
 
-![Alt-Text](/Users/noa.violetti/Container.PNG)
+![Alt-Text](/Users/noa.violetti/Container.jpg)
 	
 Damit ich in das Thema Reinkomme habe ich zuerst einige Simple Docker Files erstellt und geschaut ob ich diese zum laufen Kriege. <br>
 Dies war mein erstes Dockerfile: <br>
