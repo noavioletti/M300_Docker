@@ -134,10 +134,20 @@ Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localho
 	ENTRYPOINT: Definiert die ausführbare Datei, die beim Start des Contaiers laufen soll. <br>
 	
 - Testfälle: <br>
+	Testen ob der Unsercontainer läuft:<br>
+	docker ps <br>
+	Gestarteter Docker sollten aufgeführt sein. <br>
+	![Alt-Text](https://config.server-core.ch/bilder/m300/dockerps.JPG)<br>
 	Funktionalität Test: <br>
 	docker run -itd -p81:80 -p444:443 webservernoa:(Tag) <br>
 	docker muss via Browser auf HTTPS mit dem Port 444 sowie via HTTP mit Port 81 erreichbar sein. Hextris sollte ebenfalls laufen. <br>
 	![Alt-Text](https://config.server-core.ch/bilder/m300/httptest.JPG) ![Alt-Text](https://config.server-core.ch/bilder/m300/Testfunktionalitaet.JPG)<br>
+	<br>
+	Curl abfrage testen:<br>
+	curl http://localhost:81<br>
+	Website Code sollte danach ersichtlich sein. Der Test wird hier nur ausgeführt auf HTTP, da wir zuvor den Test getätigt haben auf der Website und es dort die funktionalität von HTTPS schon gewährleitet sein solte. <br>
+	![Alt-Text](https://config.server-core.ch/bilder/m300/curl.JPG)<br>
+	<br>
 # K4 <br>
 # K5 <br>
 # K6 <br>
