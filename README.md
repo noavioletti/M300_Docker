@@ -132,6 +132,12 @@ Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localho
 	RUN: Befehle werden umgesetzt beim erstmaligen installieren des Containers<br>	
 	CMD: Befehle werden bei jedem Start umgesetzt <br>
 	ENTRYPOINT: Definiert die ausführbare Datei, die beim Start des Contaiers laufen soll. <br>
+	
+- Testfälle: <br>
+	Funktionalität Test: <br>
+	docker run -itd -p81:80 -p444:443 webservernoa:(Tag) <br>
+	docker muss via Browser auf HTTPS mit dem Port 444 sowie via HTTP mit Port 81 erreichbar sein. Hextris sollte ebenfalls laufen. <br>
+	![Alt-Text](https://config.server-core.ch/bilder/m300/httptest.JPG) ![Alt-Text](https://config.server-core.ch/bilder/m300/Testfunktionalitaet.JPG)<br>
 # K4 <br>
 # K5 <br>
 # K6 <br>
