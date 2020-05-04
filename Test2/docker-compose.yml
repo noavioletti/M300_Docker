@@ -1,0 +1,70 @@
+version: '3'
+services:
+        web: 
+        build: .
+        ports: 
+        - 81:80/tcp 444:443/tcp 2000:19999/tcp
+volumes: 
+- webservernoa:/var/www/html
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+docker-compose.yml[+] [unix] (16:25 03/05/2020)                                                                                                                                                                                          1,1 Alles
+-- EINFÜGEN --
+

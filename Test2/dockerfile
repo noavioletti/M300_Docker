@@ -3,6 +3,8 @@ FROM ubuntu
 #Externe Schnittstellen
 Expose 80
 Expose 443
+#Expose 19999
+RUN apt-get install bash -y 
 #Volume mounten
 Volume webservernoa:/var/www/html/
 Maintainer Noa Violetti	<noavioletti@hotmail.com>
@@ -24,7 +26,15 @@ RUN apt-get install git -y
 RUN git clone https://github.com/Hextris/hextris.git
 RUN mv /hextris/* /var/www/html/
 #RUN rmdir hextris
+#Netdata Monitoring
+#RUN apt-get install netdata -y
+#RUN sed 's/127.0.0.1/0.0.0.0/' /etc/netdata/netdata.conf
+#RUN service netdata start
+#User Group ADD
+RUN groupadd -r usergruppe && useradd -r -g usergruppe defaultuser
+USER defaultuser
 #Entrypoint
 ENTRYPOINT ["apache2ctl"]
 #Instance
 CMD ["-DFOREGROUND"]
+

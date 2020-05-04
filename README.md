@@ -64,6 +64,8 @@ Das Dockerfile dazu ist Folgendes: <br>
 	#Externe Schnittstellen <br>
 	Expose 80 <br>
 	Expose 443 <br>
+	#Expose 19999 <br>
+	RUN apt-get install bash -y
 	#Volume mounten <br>
 	Volume webservernoa:/var/www/html/ <br>
 	Maintainer Noa Violetti	<noavioletti@hotmail.com> <br>
@@ -85,6 +87,13 @@ Das Dockerfile dazu ist Folgendes: <br>
 	RUN git clone https://github.com/Hextris/hextris.git <br>
 	RUN mv /hextris/* /var/www/html/ <br>
 	#RUN rmdir hextris <br>
+	#Netdata Monitoring <br>
+	#RUN apt-get install netdata -y <br>
+	#RUN sed 's/127.0.0.1/0.0.0.0/' /etc/netdata/netdata.conf <br>
+	#RUN service netdata start <br>
+	#User Group ADD <br>
+	RUN groupadd -r usergruppe && useradd -r -g usergruppe defaultuser <br>
+	USER defaultuser <br>
 	#Entrypoint <br>
 	ENTRYPOINT ["apache2ctl"] <br>
 	#Instance <br>
@@ -95,7 +104,7 @@ Zur erklärung was ich hier eigentlich gemacht habe. Ich habe ein Container erst
 Bei diesem Dockerfile wird als Gast OS Ubuntu verwendet. Danach werden die Ports 80 und 443 dem Container freigegeben.
 Ich habe noch ein Volumen erstellt damit wenn ich mehrere Webserver mit Hextris haben will, ich dieses Volumen verwenden kann. Als nächstes werden einige Grundkonfigurationen getätigt, damit man später weniger Probleme hat. 
 Nun kommen wir zum Punkt, wo wir beginnen den Webserver zu installieren. Weil ich via HTTPS auf meinen Container zugreifen möchte muss ich dies ebenfalls noch konfigurieren.
-Jetzt habe ich einen Webserver mit der default Apache Seite. Ich habe nun noch ein Webtemplate eingebaut, wo Hextris darauf läuft. Jetzt muss das Dockerfile noch gebuilded werden und dann kann der Container getestet werden. <br>
+Jetzt habe ich einen Webserver mit der default Apache Seite. Ich habe nun noch ein Webtemplate eingebaut, wo Hextris darauf läuft. Den Rest werde ich bei K4 erklären. Jetzt muss das Dockerfile noch gebuilded werden und dann kann der Container getestet werden. <br>
 
 - Netzwerkplan
 ![Alt-Text](https://config.server-core.ch/bilder/m300/Netzwerk.jpg)<br>
@@ -145,9 +154,29 @@ Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localho
 	<br>
 	Curl abfrage testen:<br>
 	curl http://localhost:81<br>
-	Website Code sollte danach ersichtlich sein. Der Test wird hier nur ausgeführt auf HTTP, da wir zuvor den Test getätigt haben auf der Website und es dort die funktionalität von HTTPS schon gewährleitet sein solte. <br>
+	Website Code sollte danach ersichtlich sein. Der Test wird hier nur ausgeführt auf HTTP, da wir zuvor den Test getätigt haben auf der Website und es dort die funktionalität von HTTPS schon gewährleitet sein solte.
+	Ansonsten müsste bei HTTPS das kleiche erscheinen, der Befehl wäre einfach curl -k https://localhost:444. <br>
 	![Alt-Text](https://config.server-core.ch/bilder/m300/curl.JPG)<br>
 	<br>
 # K4 <br>
+	
+	In diesem Bereich geht es darum was ich zum Schutz von meiner Container Umgebung getätigt habe. <br>
+- Logging <br>
+ 	Mit folgendem Befehl in der Commandline des Docker kann geprüft werden ob der Docker i.O läuft. <br>
+	docker exec (Container Name) bash -c 'while true; do echo "i.O"; sleep 1; done;' <br>
+	Zur erklärung: Mit diesem Befehl verbindet man sich im ersten Teil mit der Bash des Containers. Im Zweiten Abschnitt wird solange der Request True ergibt eine ausgabe generiert mit i.O in Seckunden tackt. <br>
+- Monitoring <br>
+	Ich habe mich mit 4 Produkten auseinander gesetzt. Zum ersten war dies Cadvisor, dann Netdata und Prometheus mit Grafana. <br>
+	Ich wollte zuerst Cadvisor laufen lassen. Ich arbeitete leider auf einer Windows Umgebung und merkte, dass ich diese nicht installieren resp aktivieren konnte. <br>
+	Bei Netdata war ich sehr lange am Werk. Ich versuchte dies mithilfe meines Docker Containers direkt zu installieren. Weil ich dies nach mehreren Stunden nicht zum laufen gebracht habe, sind diese Infos auskomentiert in dem Dockerfile. <br>
+	Ich habe weiterrechechiert und bin dan auf Prometheus und Grafana gestossen. Diese zwei Systeme habe ich als Docker Container laufen lassen.<br>
+- Sicherheitsaspekte <br>
+	Ich habe als erstes einen default user erstellt, der dazu da ist um mit möglichst wenig Recht zu arbeiten. Der User wurde auch gleich in eine erstellte Benutzergruppe gefügt und wird als standard shell benutzer aus geführt. <br>
+	Ich habe zusätzlich meine Rechen leistung von meinem Container begrenzt. Ich habe dies bei zwei Komponenten angewendet zum einen war dies die CPU leistung und zum anderen die Memory leistung. <br>
+	docker run -itd -p81:80 -p444:443 -p2000:19999 -v ~/webservernoa:/var/www/html -c 1024 -m 512000000 webservernoa:5.9 <br>
+	Dies ist mein Standard befehl um den Container zu starten. Als erstes setzte ich den Parameter interactive terminal detached, dann mappe ich meine Ports und binde mein Volumen ein. Nun komme ich zum Punkt der ich vorhin erklärt habe mit der Ressourcen zuweisung. <br>
+	Dieser Befehl könnte ich theoretisch via ein Docker Compose File automatisieren somit müsste ich nicht jedes mal ein so langer Befehl ausführen. Leider reichte mir dies Zeitlich nicht diese Variante zu realisieren. <br>
 # K5 <br>
+	
+- Reflexion
 # K6 <br>
