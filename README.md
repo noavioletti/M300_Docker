@@ -160,7 +160,7 @@ Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localho
 	<br>
 # K4 <br>
 	
-	In diesem Bereich geht es darum was ich zum Schutz von meiner Container Umgebung getätigt habe. <br>
+In diesem Bereich geht es darum was ich zum Schutz von meiner Container Umgebung getätigt habe. <br>
 - Logging <br>
  	Mit folgendem Befehl in der Commandline des Docker kann geprüft werden ob der Docker i.O läuft. <br>
 	docker exec (Container Name) bash -c 'while true; do echo "i.O"; sleep 1; done;' <br>
@@ -179,4 +179,5 @@ Das Dockernetz wird an die VM weitergeleitet. Somit kommt man direkt via localho
 # K5 <br>
 	
 - Reflexion
+	
 # K6 <br>
