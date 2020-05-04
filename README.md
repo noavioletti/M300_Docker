@@ -182,4 +182,3 @@ In diesem Bereich geht es darum was ich zum Schutz von meiner Container Umgebung
 	Wenn ich nun vergleiche was ich vor diesem Modul von Container und Docker wusste war dies gefühlt nichts. Ich verstehe jetzt die funktionalität von Container und Docker und bin ebenfalls in der Lage diverse Systeme zu realisieren mit diesem Konstrukt. <br>
 	Ich muss auch sagen, dass dieses Thema mir einiges abverlangt hat. Ich habe sehr viel Zeit investieren müssen, damit ich überhaupt in das Thema reinfand und noch mehr Zeit bis dann etwas funktioniert hatte. <br>
 	Ich habe mich in einige neue Themen gebiete reingefuxt und konnte dies auch lösen und bei sehr vielen gelang ich leider in eine Sackgasse. Bei dem Monitoring hatte ich meine grössten Schwierigkeiten. Rückblickend gesagt wäre der ganze System aufbau einiges leichter gewesen, wenn ich das komplette System mit Linux realisiert hätte. <br>
-# K6 <br>
